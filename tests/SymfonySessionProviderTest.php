@@ -28,7 +28,7 @@ class SymfonySessionProviderTest extends \PHPUnit_Framework_TestCase
 
         $session = $container->get('Symfony\Component\HttpFoundation\Session\SessionInterface');
 
-        $this->assertTrue(\PHPUnit_Framework_Assert::readAttribute($session, 'storage') instanceof MockArraySessionStorage);
+        $this->assertTrue(\PHPUnit_Framework_Assert::readAttribute($session,
+                'storage') instanceof MockArraySessionStorage);
     }
-
 }

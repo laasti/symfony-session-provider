@@ -56,10 +56,15 @@ class SymfonySessionProvider extends \League\Container\ServiceProvider
         }
         $di->add('Symfony\Component\HttpFoundation\Session\Storage\MetadataBag')->withArgument($config['metadata_key']);
 
-        $di->add('Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface', $config['storage_class'])->withArguments([$config, null, 'Symfony\Component\HttpFoundation\Session\Storage\MetadataBag']);
+        $di->add('Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface',
+            $config['storage_class'])->withArguments([
+            $config,
+            null,
+            'Symfony\Component\HttpFoundation\Session\Storage\MetadataBag'
+        ]);
 
 
-        $di->add('Symfony\Component\HttpFoundation\Session\SessionInterface', $config['session_class'], true)->withArgument('Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface');
+        $di->add('Symfony\Component\HttpFoundation\Session\SessionInterface', $config['session_class'],
+            true)->withArgument('Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface');
     }
-
 }
